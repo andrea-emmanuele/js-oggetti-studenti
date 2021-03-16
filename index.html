@@ -5,6 +5,13 @@
     <title>objects</title>
 </head>
 <body>
+    <h3>Inserisci i dati di uno studente</h3>
+        <input name="name" type="text" placeholder="Name">
+        <input name="surname" type="text" placeholder="Surname">
+        <input name="age" type="number" placeholder="Age">
+        <input name="save" type="submit" value="Save" onclick="saveStudent()">
+    <br>
+    <hr>
     <script>
         let student = {
             name: null,
@@ -19,6 +26,54 @@
             document.querySelector("body").append(span);
             span.innerHTML = studentKey + "<br>";
         }
+
+        document.querySelector("body").append(document.createElement("HR"));
+
+        let students = [
+            {
+                name: "Andrea",
+                surname: "Emmanuele",
+                age: 22,
+            },
+            {
+                name: "Peppino",
+                surname: "Impastato",
+                age: 30,
+            }
+        ];
+
+        document.querySelector("body").append(document.createElement("div"));
+
+        showStudents();
+
+        function showStudents() {
+            for (let i = 0; i < students.length; i++) {
+                for (const studentsKey in students[i]) {
+                    span = document.createElement("SPAN");
+                    document.querySelector("div").append(span);
+                    span.innerHTML = studentsKey + ": " + students[i][studentsKey] + "<br>";
+                }
+                document.querySelector("div").append(document.createElement("BR"));
+            }
+        }
+
+        function saveStudent() {
+            document.querySelector("div").innerHTML = "";
+            let _name = document.querySelector("input[name='name']").value;
+            let _surname = document.querySelector("input[name='surname']").value;
+            let _age = parseInt(document.querySelector("input[name='age']").value);
+            _name = _name[0].toUpperCase() + _name.substring(1);
+            _surname = _surname[0].toUpperCase() + _surname.substring(1);
+
+            students.push({
+                name: _name,
+                surname: _surname,
+                age: _age
+            });
+
+            showStudents();
+        }
+
     </script>
 </body>
 </html>
