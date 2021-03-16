@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>objects</title>
+</head>
+<body>
+    <script>
+        let student = {
+            name: null,
+            surname: null,
+            age: null,
+        };
+
+        let span;
+
+        for (const studentKey in student) {
+            span = document.createElement("SPAN");
+            document.querySelector("body").append(span);
+            span.innerHTML = studentKey + "<br>";
+        }
+    </script>
+</body>
+</html>
